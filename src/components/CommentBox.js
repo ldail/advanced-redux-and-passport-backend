@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {connect} from 'react-redux';
-import * as actions from 'actions';
+import {saveComment, fetchComments} from 'actions';
 import {withRouter} from 'react-router-dom';
 
 const CommentBox = ({saveComment, fetchComments, auth, history}) => {
@@ -25,7 +25,7 @@ const CommentBox = ({saveComment, fetchComments, auth, history}) => {
       <h4>Add a comment</h4>
       <textarea value={comment} onChange={(e) => setComment(e.target.value)} />
       <div>
-        <button>Submit Comment</button>
+        <button type="submit">Submit Comment</button>
       </div>
     </form>
     <button type="button" onClick={fetchComments} className="fetch-comments">Fetch comments</button>
@@ -37,6 +37,11 @@ const mapStateToProps = state => ({
   auth: state.auth
 })
 
+const mapDispatchToProps = dispatch => ({
+  saveComment: (comment) => dispatch(saveComment(comment)),
+  fetchComments: () => dispatch(fetchComments())
+})
 
 
-export default withRouter(connect(mapStateToProps,actions)(CommentBox));
+
+export default withRouter(connect(mapStateToProps,mapDispatchToProps)(CommentBox));

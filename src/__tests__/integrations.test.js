@@ -4,17 +4,17 @@ import Root from 'Root';
 import moxios from 'moxios';
 import App from 'components/App';
 
-beforeEach(() => {
-  moxios.install();
-  moxios.stubRequest('http://jsonplaceholder.typicode.com/comments', {
-  status: 200,
-  response: [{name: 'Fetched #1'}, {name: 'Fetched #2'}]
-  });
-})
+// beforeEach(() => {
+//   moxios.install();
+//   moxios.stubRequest('http://jsonplaceholder.typicode.com/comments', {
+//   status: 200,
+//   response: [{name: 'Fetched #1'}, {name: 'Fetched #2'}]
+//   });
+// })
 
-afterEach(() => {
-  moxios.uninstall();
-})
+// afterEach(() => {
+//   moxios.uninstall();
+// })
 
 it('can fetch a list of comments and display them', async (done) => {
   const wrapped = mount(<Root><App /></Root>);

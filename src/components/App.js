@@ -32,7 +32,7 @@ const App = ({ auth, changeAuth }) => {
     <div>
       {renderHeader()}
       <Route path="/post" component={CommentBox} />
-      <Route exact path="/" component={CommentList} />
+      <Route path="/" component={CommentList} />
     </div>
   );
 };
