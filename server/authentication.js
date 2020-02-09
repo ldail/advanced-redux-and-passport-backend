@@ -38,5 +38,7 @@ exports.signup = function(req,res,next) {
 }
 
 exports.signin = function(req,res,next) {
-  console.log('beginning of sign in');
+  const {user} = req;
+
+  res.send({token: tokenForUser(user)})
 }
