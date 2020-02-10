@@ -30,7 +30,9 @@ exports.signup = function(req,res,next) {
     if (err) { return next(err); }
   });
 
-  res.status(200).json({token: tokenForUser(user)});
+  const token = tokenForUser(user);
+
+  res.status(200).json({token});
     
   });
 

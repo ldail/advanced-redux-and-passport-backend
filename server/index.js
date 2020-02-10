@@ -3,6 +3,7 @@ const http = require('http');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 mongoose.connect('mongodb://localhost:27017/auth', {useUnifiedTopology: true, useNewUrlParser: true }, function() { 
   console.log('connected');
@@ -14,6 +15,7 @@ const router = require('./router');
 
 app.use(morgan('combined'));
 app.use(bodyParser.json({type: '*/*'}))
+app.use(cors());
 
 router(app);
 
